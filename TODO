@@ -5,11 +5,12 @@
     * maybe?
     * more likely to keep going in the same direction most of the time
 * add feeding
-    * calling screenfish with an arg should do it (then can set backtick)
+    * calling screenguppy with an arg should do it (then can set backtick)
     * need to save state for this, should be one-line text file
     * choose some non-fish places to drop assorted dots: .. . ...
+      * brief reverse video splash!
     * when fish mouth passes those dots, remove them
-      * this is tricky to detect when speed != 1!
+      * this is tricky to detect when speed != 1
     * bind this to a macro with register/process commands
     * unused screen hotkey letters: ejopuy
     * swim faster when there's food ahead?
