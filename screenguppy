@@ -1,0 +1,30 @@
+#!/usr/bin/python3
+
+"""
+Screenguppy: An ASCII fish friend to hang out in your screen session.
+(c) 2017 Finn Ellis. Free to use under the MIT license; see LICENSE.
+"""
+
+import datetime
+
+RFISH="><ε*>"
+LFISH="<*3><"
+WIDTH=80 - len(RFISH)
+SPEED=2
+
+def tri_wave(x, period):
+    y = x % period - period/2
+    if y < 0:
+        asc = False
+    else:
+        asc = True
+    return int(abs(y)), asc
+
+def fish(forward):
+    if forward:
+        return RFISH
+    else:
+        return LFISH
+
+spaces, forward = tri_wave(int(datetime.datetime.now().timestamp() * SPEED), WIDTH)
+print(fish(forward).rjust(spaces).ljust(WIDTH-spaces))
