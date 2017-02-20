@@ -84,7 +84,7 @@ that line and Screenguppy can't work at the same time. If you're not sure
 which one you want to keep, you can comment out the other one temporarily
 by adding a # at the beginning of that line.
 
-Finally, if you're already running a screen, reread the configuration file
+Finally, if you're already running a screen, re-run the configuration file
 by typing `C-a :` and then `source ~/.screenrc`. If you see errors about
 the screenguppy command not being found, type `C-a :` and then
 `setenv PATH "$PATH:$HOME/bin"`. 
