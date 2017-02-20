@@ -7,8 +7,8 @@ Screenguppy: An ASCII fish friend to hang out in your screen session.
 
 import datetime
 
-RFISH="><ε*>"
-LFISH="<*3><"
+RFISH="><ε°>"
+LFISH="<°3><"
 WIDTH=80 - len(RFISH)
 SPEED=2
 
