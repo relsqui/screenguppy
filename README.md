@@ -21,9 +21,11 @@ sudo apt-get screen
 Clone this repository.
 
 ```bash
-git clone git@github.com:relsqui/screenguppy.git
+git clone https://github.com/relsqui/screenguppy.git
 
 ```
+
+(You can use the SSH address instead if you have SSH keys configured on Github already.)
 
 Link the executable into your bin directory.
 
