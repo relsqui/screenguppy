@@ -17,6 +17,7 @@ bar or anywhere else that you can insert script output). See
 * [Installing Screenguppy](#installing-screenguppy)
 * [Running Screenguppy Without Screen](#running-screenguppy-without-screen)
 * [Adding Screenguppy to Screen](#adding-screenguppy-to-screen)
+* [Advanced Customization](#advanced-customization)
 * [Removing Screenguppy](#removing-screenguppy)
 
 
@@ -126,6 +127,34 @@ If you're not running a screen yet, type `screen` to start one.
 Enjoy your fishy friend!
 
 
+## Advanced Customization
+
+* The `%{yb}` part of the caption line in `.screenrc` defines the fish and
+  background colors. See the
+  [String Escapes section of the GNU Screen Manual](https://www.gnu.org/software/screen/manual/html_node/String-Escapes.html)
+  for other options.
+* Screenguppy assumes your terminal is at least 80 characters wide and uses no
+  more of it than that. You can give your fish more or less room to swim by
+  editing the WIDTH variable in the `screenguppy` executable.
+* You can change the fish ASCII art (for example, removing the Unicode if your
+  terminal doesn't support it) by editing the RFISH and LFISH variables in the
+  `screenguppy` executable (the right-facing and left-facing versions,
+  respectively).
+  * It doesn't even have to be a static string. You can put a clock in there,
+    or your machine's uptime, or anything else you know how to add to a string
+    in Python.
+  * If RFISH and LFISH are different lengths, and WIDTH is set near the actual
+    width of your terminal, the padding might overflow and print extra spaces
+    on the next line.
+* You can change the fish's speed by changing the SPEED variable in the
+  `screenguppy` executable. This doesn't change how often it moves (which is
+  capped at once per second by screen itself), but how far it moves each time.
+  * SPEED doesn't have to be an integer, but the distance will always be rounded
+    to whole characters.
+  * If SPEED is less than 1, the fish will sometimes skip its move.
+  * If SPEED is negative, the fish will swim backwards.
+
+
 ## Removing Screenguppy
 
 You can remove Screenguppy from your screen by deleting the two lines you added
@@ -133,8 +162,8 @@ to your `.screenrc` file. If you have a screen open that you would like to keep
 running, refresh its configuration by typing `C-a :` and then
 `source ~/.screenrc`.
 
-You can also delete it entirely just by removing the directory it's in and the
-link you created:
+You can also delete Screenguppy entirely just by removing the directory it's in
+and the link you created:
 
 ```bash
 rm -rf ~/screenguppy # or wherever you cloned it

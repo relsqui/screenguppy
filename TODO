@@ -1,3 +1,4 @@
+* move these to issues
 * auto-detect screen width
     * dumptermcap in screenrc
     * re /:co#([0-9]+):/ in /var/run/screen/S-$USER/.termcap to get cols
@@ -28,3 +29,4 @@
       *  <*3333)
       * <*3333><
     * this would be so cool though
+* multiple fish??
