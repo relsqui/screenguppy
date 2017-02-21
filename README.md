@@ -94,3 +94,20 @@ the screenguppy command not being found, type `C-a :` and then
 If you're not running a screen yet, type `screen` to start one.
 
 Enjoy your fishy friend!
+
+
+## Non-Screen Usage
+
+If you just want to watch the animated fish without setting it up in your
+screen caption line (or you already have a caption line, don't use screen,
+etc.) then you can run the script independently in a bash loop, like so:
+
+```bash
+while true; do
+  clear
+  screenguppy
+  sleep 1
+done
+```
+
+Type `ctrl-c` to stop.
