@@ -7,10 +7,20 @@ Screenguppy is a little friend to keep you company in your GNU screen session.
 Specifically, it adds an extra line at the bottom (in the caption field, above
 the hardline if you have one) with an ASCII fish that swims back and forth.
 
+If you're not running screen or don't want to put a fish there, you can also
+just run it in a bash loop (or use similar logic to add it to your i3 status
+bar or anywhere else that you can insert script output). See
+[Running Screenguppy Without Screen](#running-screenguppy-without-screen).
 
-## Setup
 
-### Installing Screenguppy
+## Contents
+* [Installing Screenguppy](#installing-screenguppy)
+* [Running Screenguppy Without Screen](#running-screenguppy-without-screen)
+* [Adding Screenguppy to Screen](#adding-screenguppy-to-screen)
+* [Removing Screenguppy](#removing-screenguppy)
+
+
+## Installing Screenguppy
 
 Install screen, if necessary.
 
@@ -60,7 +70,7 @@ source .bashrc
 Now you should be able to run `screenguppy` and see one fish.
 
 
-## Non-Screen Usage
+## Running Screenguppy Without Screen
 
 If you just want to watch the animated fish without setting it up in your
 screen caption line (or you already have a caption line, don't use screen,
@@ -77,7 +87,7 @@ done
 Type `ctrl-c` to stop.
 
 
-### Configuring Screen
+## Adding Screenguppy to Screen
 
 Open your `~/.screenrc` file in a text editor. Do a quick search for any
 lines that already have the command `backtick` in them. If you don't find any
