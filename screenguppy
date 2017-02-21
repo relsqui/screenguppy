@@ -10,7 +10,7 @@ import datetime
 
 RFISH="><ε°>"
 LFISH="<°3><"
-WIDTH=75 - len(RFISH)
+WIDTH=76 - len(RFISH)
 SPEED=2
 
 def triangle_wave(x, period):
@@ -30,5 +30,5 @@ def fish(forward):
 def pad(count):
     return " " * count
 
-spaces, forward = triangle_wave(int(datetime.datetime.now().timestamp() * SPEED), WIDTH)
+spaces, forward = triangle_wave(int(datetime.datetime.now().timestamp() * SPEED), WIDTH * 2)
 print(pad(spaces) + fish(forward) + pad(WIDTH - spaces))
