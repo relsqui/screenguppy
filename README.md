@@ -96,7 +96,7 @@ lines that already have the command `backtick` in them. If you don't find any
 
 ```
 backtick 1 1 1 screenguppy
-caption always '%{yb}%=%1`%='
+caption always '%{yk}%=%1`%='
 ```
 
 If there are some backtick lines, find the highest number that appears right
@@ -109,7 +109,7 @@ for `N` in both places (once per line).
 
 ```
 backtick N 1 1 screenguppy
-caption always '%{yb}%=%N`%='
+caption always '%{yk}%=%N`%='
 ```
 
 NOTE: If you already have a `caption` command in your `.screenrc` file,
