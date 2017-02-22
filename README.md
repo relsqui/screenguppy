@@ -130,21 +130,17 @@ already there. Look for any lines setting either `status-left` or
 `status-right`. If none are present, just add the following line:
 
 ```
-set -g status-left '#(bin/screenguppy)'
+set -g status-left '#(screenguppy)'
 ```
 
 If you do have status lines in the config, and add to one of them the text
-`#(bin/screenguppy)`. You can limit the width that the fish will swim in
-by adding a number afterwards: `#(bin/screenguppy 20)`.
+`#(screenguppy)`. You can limit the width that the fish will swim in
+by adding a number afterwards: `#(screenguppy 20)`.
 
-For example, if you have the default `status-left` which prints only the
-session name:
-
-`set -g status-left '[#S] '`
-
+For example, the default `status-left` prints only the session name.
 You can put the fish right after the session name by changing it to:
 
-`set -g status-left '[#S] #(bin/screenguppy)'`
+`set -g status-left '[#S] #(screenguppy)'`
 
 Once you modify your config, you can reload it in tmux without restarting, by
 running the following command in any tmux shell:
