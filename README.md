@@ -5,12 +5,18 @@ modify, etc. under the MIT license. See included LICENSE file.
 
 Screenguppy is a little friend to keep you company in your GNU screen session.
 Specifically, it adds an extra line at the bottom (in the caption field, above
-the hardline if you have one) with an ASCII fish that swims back and forth.
+the hardline if you have one) with a text-based fish that swims back and forth.
 
 If you're not running screen or don't want to put a fish there, you can also
 just run it in a bash loop (or use similar logic to add it to your i3 status
 bar or anywhere else that you can insert script output). See
 [Running Screenguppy Without Screen](#running-screenguppy-without-screen).
+
+If you'd like to use Screenguppy with tmux, there are partial instructions in
+an [open pull request](#2). If you can improve them, please leave comments!
+
+Contributions of both code and ideas to Screenguppy are welcome. Check out the
+issue tracker to see what's already planned and suggest other things.
 
 
 ## Contents
@@ -136,10 +142,10 @@ Enjoy your fishy friend!
 * Screenguppy assumes your terminal is at least 80 characters wide and uses no
   more of it than that. You can give your fish more or less room to swim by
   editing the WIDTH variable in the `screenguppy` executable.
-* You can change the fish ASCII art (for example, removing the Unicode if your
-  terminal doesn't support it) by editing the RFISH and LFISH variables in the
-  `screenguppy` executable (the right-facing and left-facing versions,
-  respectively).
+* You can change the fish Unicode art (for example, switching it to ASCII if
+  your terminal doesn't support Unicode) by editing the RFISH and LFISH
+  variables in the `screenguppy` executable (the right-facing and left-facing
+  versions, respectively).
   * It doesn't even have to be a static string. You can put a clock in there,
     or your machine's uptime, or anything else you know how to add to a string
     in Python.
