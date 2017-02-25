@@ -7,6 +7,7 @@ https://github.com/relsqui/screenguppy
 """
 
 import datetime
+import sys
 
 RFISH="><ε°>"
 LFISH="<°3><"
@@ -29,6 +30,9 @@ def fish(forward):
 
 def pad(count):
     return " " * count
+
+if len(sys.argv) > 1:
+    WIDTH=int(sys.argv[1])
 
 spaces, forward = triangle_wave(int(datetime.datetime.now().timestamp() * SPEED), WIDTH * 2)
 print(pad(spaces) + fish(forward) + pad(WIDTH - spaces))

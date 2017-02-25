@@ -7,16 +7,12 @@ Screenguppy is a little friend to keep you company in your GNU screen session.
 Specifically, it adds an extra line at the bottom (in the caption field, above
 the hardline if you have one) with an ASCII fish that swims back and forth.
 
-If you're not running screen or don't want to put a fish there, you can also
-just run it in a bash loop (or use similar logic to add it to your i3 status
-bar or anywhere else that you can insert script output). See
-[Running Screenguppy Without Screen](#running-screenguppy-without-screen).
-
 
 ## Contents
 * [Installing Screenguppy](#installing-screenguppy)
-* [Running Screenguppy Without Screen](#running-screenguppy-without-screen)
+* [Running Screenguppy in a Shell](#running-screenguppy-in-a-shell)
 * [Adding Screenguppy to Screen](#adding-screenguppy-to-screen)
+* [Adding Screenguppy to Tmux](#adding-screenguppy-to-tmux)
 * [Advanced Customization](#advanced-customization)
 * [Removing Screenguppy](#removing-screenguppy)
 
@@ -71,7 +67,7 @@ source .bashrc
 Now you should be able to run `screenguppy` and see one fish.
 
 
-## Running Screenguppy Without Screen
+## Running Screenguppy in a Shell
 
 If you just want to watch the animated fish without setting it up in your
 screen caption line (or you already have a caption line, don't use screen,
@@ -127,6 +123,33 @@ If you're not running a screen yet, type `screen` to start one.
 Enjoy your fishy friend!
 
 
+## Adding Screenguppy to Tmux
+
+Open your `~/.tmux.conf` file in a text editor, or create it if it's not
+already there. Look for any lines setting either `status-left` or
+`status-right`. If none are present, just add the following line:
+
+```
+set -g status-left '#(screenguppy)'
+```
+
+If you do have status lines in the config, and add to one of them the text
+`#(screenguppy)`. You can limit the width that the fish will swim in
+by adding a number afterwards: `#(screenguppy 20)`.
+
+For example, the default `status-left` prints only the session name.
+You can put the fish right after the session name by changing it to:
+
+`set -g status-left '[#S] #(screenguppy)'`
+
+Once you modify your config, you can reload it in tmux without restarting, by
+running the following command in any tmux shell:
+
+```
+tmux source-file ~/.tmux.conf
+```
+
+
 ## Advanced Customization
 
 * The `%{yb}` part of the caption line in `.screenrc` defines the fish and
@@ -135,7 +158,8 @@ Enjoy your fishy friend!
   for other options.
 * Screenguppy assumes your terminal is at least 80 characters wide and uses no
   more of it than that. You can give your fish more or less room to swim by
-  editing the WIDTH variable in the `screenguppy` executable.
+  passing the width as the first argument, or by editing the WIDTH variable in
+  the `screenguppy` executable.
 * You can change the fish ASCII art (for example, removing the Unicode if your
   terminal doesn't support it) by editing the RFISH and LFISH variables in the
   `screenguppy` executable (the right-facing and left-facing versions,
