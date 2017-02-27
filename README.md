@@ -139,26 +139,24 @@ Enjoy your fishy friend!
   background colors. See the
   [String Escapes section of the GNU Screen Manual](https://www.gnu.org/software/screen/manual/html_node/String-Escapes.html)
   for other options.
-* Screenguppy assumes your terminal is at least 80 characters wide and uses no
-  more of it than that. You can give your fish more or less room to swim by
-  editing the WIDTH variable in the `screenguppy` executable.
-* You can change the fish Unicode art (for example, switching it to ASCII if
-  your terminal doesn't support Unicode) by editing the RFISH and LFISH
-  variables in the `screenguppy` executable (the right-facing and left-facing
-  versions, respectively).
-  * It doesn't even have to be a static string. You can put a clock in there,
-    or your machine's uptime, or anything else you know how to add to a string
-    in Python.
-  * If RFISH and LFISH are different lengths, and WIDTH is set near the actual
-    width of your terminal, the padding might overflow and print extra spaces
-    on the next line.
-* You can change the fish's speed by changing the SPEED variable in the
-  `screenguppy` executable. This doesn't change how often it moves (which is
-  capped at once per second by screen itself), but how far it moves each time.
-  * SPEED doesn't have to be an integer, but the distance will always be rounded
-    to whole characters.
-  * If SPEED is less than 1, the fish will sometimes skip its move.
-  * If SPEED is negative, the fish will swim backwards.
+* The `fish_options` block near the top of the `screenguppy` executable
+  provides quick access to several configuration choices:
+  * Screenguppy assumes your terminal is at least 80 characters wide and uses no
+    more of it than that. You can give your fish more or less room to swim by
+    editing the value for `max_range`.
+  * Screenguppy will try to display Unicode art, and revert to ASCII if it
+    fails.  You can force ASCII output by setting `use_unicode` to `False`.
+    * You can also change the details of the art by editing the values of
+      `unicode_art` and `ascii_art` which are initialized in the `Fish` class.
+      Each one should be an array of two strings showing the right-facing
+      variant and the left-facing variant, respectively.
+  * You can change the fish's speed by changing the value for `speed`. This
+    doesn't change how often it moves (which is capped at once per second by
+    screen itself), but how far it moves each time.
+    * The speed doesn't have to be an integer, but the distance will always be
+      rounded.
+    * If the speed is less than 1, the fish will sometimes skip its move.
+    * If the speed is negative, the fish will swim backwards.
 
 
 ## Removing Screenguppy

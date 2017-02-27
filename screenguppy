@@ -1,17 +1,52 @@
 #!/usr/bin/python3
 
 """
-Screenguppy: An ASCII fish friend to hang out in your screen session.
+SCREENGUPPY v.0.0.1
+A text-based fish friend to hang out in your screen session.
 (c) 2017 Finn Ellis. Free to use under the MIT license; see LICENSE.
 https://github.com/relsqui/screenguppy
 """
 
-import datetime
+from datetime import datetime
 
-RFISH="><ε°>"
-LFISH="<°3><"
-WIDTH=76 - len(RFISH)
-SPEED=2
+
+fish_options = {
+    "max_range": 76,
+    "use_unicode": True,
+    "speed": 2
+}
+
+
+class Fish(object):
+    def __init__(self, use_unicode=True, max_range=76, speed=2):
+        super().__init__()
+        self.unicode_art = ["><ε°>", "<°3><"]
+        self.ascii_art = ["><3'>", "<'3><"]
+        self.use_unicode = use_unicode
+        self.range = max_range - len(self)
+        self.speed = speed
+
+    def __len__(self):
+        return max(map(len, self.unicode_art + self.ascii_art))
+
+    def art(self, face_right):
+        if self.use_unicode:
+            sprites = self.unicode_art
+        else:
+            sprites = self.ascii_art
+        if face_right:
+            return sprites[0]
+        else:
+            return sprites[1]
+
+    def line(self, tick=None):
+        if tick is None:
+            tick = int(datetime.now().timestamp())
+        left_pad, face_right = triangle_wave(tick * self.speed, self.range * 2)
+        left_spaces = " " * left_pad
+        right_spaces = " " * (self.range - left_pad)
+        return left_spaces + self.art(face_right) + right_spaces
+
 
 def triangle_wave(x, period):
     y = x % period - period/2
@@ -21,14 +56,9 @@ def triangle_wave(x, period):
         asc = True
     return int(abs(y)), asc
 
-def fish(forward):
-    if forward:
-        return RFISH
-    else:
-        return LFISH
 
-def pad(count):
-    return " " * count
-
-spaces, forward = triangle_wave(int(datetime.datetime.now().timestamp() * SPEED), WIDTH * 2)
-print(pad(spaces) + fish(forward) + pad(WIDTH - spaces))
+try:
+    print(Fish(**fish_options).line())
+except UnicodeEncodeError:
+    fish_options["use_unicode"] = False
+    print(Fish(**fish_options).line())
